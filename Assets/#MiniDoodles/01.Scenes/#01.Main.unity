@@ -1868,6 +1868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9d4c539ca58f94cac18a44ea6a7531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
   image_Character: {fileID: 682889781}
   text_Name: {fileID: 825174062}
   text_Level: {fileID: 139324674}
@@ -2744,6 +2745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14bb6869c83ddca4486556a3978bf844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  image_Character: {fileID: 0}
 --- !u!1 &611236643
 GameObject:
   m_ObjectHideFlags: 0
@@ -5942,6 +5944,7 @@ MonoBehaviour:
   menuArr:
   - {fileID: 218383662}
   - {fileID: 964822428}
+  - {fileID: 610275226}
 --- !u!4 &1462924140
 Transform:
   m_ObjectHideFlags: 0

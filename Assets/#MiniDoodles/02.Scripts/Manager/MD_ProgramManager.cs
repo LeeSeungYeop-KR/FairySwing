@@ -38,7 +38,7 @@ namespace MiniDoodles
     public class MD_ProgramManager : MD_Singlton<MD_ProgramManager>
     {
         [Header("- Volume")]
-        public MD_Volume soundVolume;
+        public MD_Volume soundVolume; 
 
         [Header("- Fade Value")]
         public float fadeTime = 1.5f;

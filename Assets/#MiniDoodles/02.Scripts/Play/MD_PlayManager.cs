@@ -43,32 +43,37 @@ namespace MiniDoodles
 
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.14 </para>
+        /// <para> 내    용 : 모든 메뉴를 끄는 메서드 </para>
+        /// </summary>
+        private void Func_AllMenuDisable()
+        {
+            for (int i = 1; i < menuArr.Length; i++)
+            {
+                menuArr[i].SetActive(false);
+            }
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
         /// <para> 작 성 일 : 2020.07.25 </para>
         /// <para> 내    용 : 캐릭터 버튼을 눌렀을 때 호출되는 버튼 메서드 </para>
         /// </summary>
         public void Button_Character()
         {
-            menuArr[0].SetActive(false);
+            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
             menuArr[1].SetActive(true);
         }
 
         public void Button_BackToMain()
         {
-            for (int i = 1; i < menuArr.Length; i++)
-            {
-                menuArr[i].SetActive(false);
-            }
-
+            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
             menuArr[0].SetActive(true);
         }
 
         public void Button_BackToCharacter()
         {
-            for (int i = 1; i < menuArr.Length; i++)
-            {
-                menuArr[i].SetActive(false);
-            }
-
+            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
             menuArr[1].SetActive(true);
         }
     }
