@@ -18,6 +18,8 @@ namespace MiniDoodles
         [Header("- Menu")]
         [SerializeField] private GameObject[] menuArr;          // 메뉴들의 배열
 
+        [Header("- 장비창을 오픈 할 캐릭터의 번호")]
+        public int characterNum;                    // 장비창을 오픈할 캐릭터 번호
 
         protected override void Awake()
         {
@@ -48,10 +50,21 @@ namespace MiniDoodles
         /// </summary>
         private void Func_AllMenuDisable()
         {
-            for (int i = 1; i < menuArr.Length; i++)
+            for (int i = 0; i < menuArr.Length; i++)
             {
                 menuArr[i].SetActive(false);
             }
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.07.25 </para>
+        /// <para> 내    용 : 메인으로 가는 버튼 메서드 </para>
+        /// </summary>    
+        public void Button_BackToMain()
+        {
+            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
+            menuArr[0].SetActive(true);
         }
 
         /// <summary>
@@ -65,16 +78,17 @@ namespace MiniDoodles
             menuArr[1].SetActive(true);
         }
 
-        public void Button_BackToMain()
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.14 </para>
+        /// <para> 내    용 : 캐릭터 카드 버튼을 눌렀을 때 호출되는 버튼 메서드 </para>
+        /// </summary>
+        public void Func_CharacterEquipment(int _num)
         {
-            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
-            menuArr[0].SetActive(true);
-        }
+            characterNum = _num;
 
-        public void Button_BackToCharacter()
-        {
             Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
-            menuArr[1].SetActive(true);
+            menuArr[2].SetActive(true);
         }
     }
 }

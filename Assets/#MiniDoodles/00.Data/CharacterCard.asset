@@ -16,3 +16,4 @@ MonoBehaviour:
     type: 3}
   sprite_CharacterArr:
   - {fileID: 21300000, guid: 1a19888daf6c24542bd13f56a96b884d, type: 3}
+  - {fileID: 21300000, guid: 41981bddde679ba4e9e3b275c1f549fc, type: 3}
