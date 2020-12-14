@@ -1,0 +1,3 @@
+id,name,attack,magic,attackDefence,magicDefence,type
+20001,Sword,10,0,0,0,4
+21001,Ring,0,0,0,8,3

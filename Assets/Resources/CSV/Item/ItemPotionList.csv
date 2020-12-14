@@ -1,0 +1,5 @@
+id,name,time,volumeHP,volumeMP
+10001,Red Potion,1,50,0
+10002,Blue Potion,1,0,50
+10003,Big Red Potion,1,100,0
+10004,Big Blue Potion,1,0,100

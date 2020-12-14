@@ -1,0 +1,12 @@
+id,name,type
+10001,Red Potion,1
+10002,Blue Potion,1
+10003,Big Red Potion,1
+10004,Big Blue Potion,1
+11001,RandomBox,1
+20001,Sword,0
+21001,Ring,0
+30001,Left Piece,2
+30002,Right Piece,2
+30003,All Piece,2
+40001,Letter,2
