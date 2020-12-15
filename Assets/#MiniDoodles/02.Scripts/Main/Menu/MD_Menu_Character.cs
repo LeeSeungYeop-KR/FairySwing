@@ -50,6 +50,7 @@ namespace MiniDoodles
                 // 카드 생성
                 MD_Character_Card _cardOBJ = Instantiate(prefab_Card, cardPool).GetComponent<MD_Character_Card>();
                 _cardOBJ.Func_SetCardData(characterDataList[i], i);
+                _cardOBJ.characterController = this;
 
                 characterList.Add(_cardOBJ);
             }
@@ -60,9 +61,9 @@ namespace MiniDoodles
         /// <para> 작 성 일 : 2020.12.14 </para>
         /// <para> 내    용 : 해당 캐릭터의 장비창을 여는 기능 </para>
         /// </summary>
-        public void Func_PopEquipment(int _num)
+        public void Func_PopEquipment(int _num, MD_CharacterData _data)
         {
-            MD_PlayManager.Instance.Func_CharacterEquipment(_num);
+            MD_PlayManager.Instance.Func_CharacterEquipment(_num, _data);
         }
 
     }

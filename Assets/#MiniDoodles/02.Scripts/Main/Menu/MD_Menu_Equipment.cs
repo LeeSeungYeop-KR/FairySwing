@@ -11,5 +11,14 @@ namespace MiniDoodles
         [Header("- 캐릭터")]
         [SerializeField] private Image image_Character;
 
+        private void OnEnable()
+        {
+            
+        }
+
+        private void Func_SetCharacter()
+        {
+
+        }
     }
 }

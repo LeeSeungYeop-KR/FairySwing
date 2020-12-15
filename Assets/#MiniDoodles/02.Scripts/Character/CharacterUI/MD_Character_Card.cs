@@ -157,7 +157,7 @@ namespace MiniDoodles
 
             if (_button != null)
             {
-                _button.onClick.AddListener(Button_ClickCharacter_Illustration);
+                _button.onClick.AddListener(Button_ClickCharacter_Card);
             }
         }
 
@@ -170,10 +170,10 @@ namespace MiniDoodles
         /// <para>작 성 일 : 2020.11.17</para>
         /// <para>내    용 : 일러스트를 클릭했을 때 장비창으로 이동하는 메서드</para>
         /// </summary>
-        public void Button_ClickCharacter_Illustration()
+        public void Button_ClickCharacter_Card()
         {
             Debug.Log("클릭 캐릭터 일러스트");
-            characterController?.Func_PopEquipment(cardNum);
+            characterController?.Func_PopEquipment(cardNum, data);
         }
 
         #endregion

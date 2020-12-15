@@ -21,6 +21,9 @@ namespace MiniDoodles
         [Header("- 장비창을 오픈 할 캐릭터의 번호")]
         public int characterNum;                    // 장비창을 오픈할 캐릭터 번호
 
+        [Header("- 장비창을 오픈 할 캐릭터의 번호")]
+        public MD_CharacterData characterData;
+
         protected override void Awake()
         {
             base.Awake();
@@ -42,7 +45,8 @@ namespace MiniDoodles
         {
             image_Fade.gameObject.SetActive(true);
         }
-
+        #region Button 메서드
+        
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
         /// <para> 작 성 일 : 2020.12.14 </para>
@@ -80,15 +84,34 @@ namespace MiniDoodles
 
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.15 </para>
+        /// <para> 내    용 : 인벤토리 버튼을 눌렀을 때 호출되는 버튼 메서드 </para>
+        /// </summary>
+        public void Button_Inventory()
+        {
+            characterNum = -1;
+            //characterData.;
+
+            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
+            menuArr[2].SetActive(true);     // 인벤토리 열기
+        }
+
+        #endregion
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
         /// <para> 작 성 일 : 2020.12.14 </para>
         /// <para> 내    용 : 캐릭터 카드 버튼을 눌렀을 때 호출되는 버튼 메서드 </para>
         /// </summary>
-        public void Func_CharacterEquipment(int _num)
+        public void Func_CharacterEquipment(int _num, MD_CharacterData _data)
         {
-            characterNum = _num;
+            characterNum = _num;        // 캐릭터 번호
+            characterData = _data;      // 캐릭터 데이터
 
             Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
             menuArr[2].SetActive(true);
         }
+
+        
     }
 }
