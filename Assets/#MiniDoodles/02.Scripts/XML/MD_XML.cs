@@ -86,7 +86,6 @@ namespace MiniDoodles
             _childSet.SetAttribute("Name", "뽀용");      // Name
             _childSet.SetAttribute("Rare", "1");      // Rare
             _childSet.SetAttribute("Level", "1");      // Level
-            _childSet.SetAttribute("ImageNum", "0");      // ImageNum
 
             _rootSet.AppendChild(_childSet);
 

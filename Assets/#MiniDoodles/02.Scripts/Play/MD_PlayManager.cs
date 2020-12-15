@@ -89,8 +89,9 @@ namespace MiniDoodles
         /// </summary>
         public void Button_Inventory()
         {
+            // 캐릭터 초기화
             characterNum = -1;
-            //characterData.;
+            characterData.data_ID = -1;
 
             Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
             menuArr[2].SetActive(true);     // 인벤토리 열기
