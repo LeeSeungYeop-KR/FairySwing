@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MiniDoodles
 {
@@ -11,6 +12,13 @@ namespace MiniDoodles
     /// </summary>
     public class MD_Slot : MonoBehaviour
     {
+        [Header("- 슬롯의 아이템 개수 Text")]
+        [SerializeField] private Text text_ItemNum;
 
+        [Header("- 슬롯의 아이템")]
+        [SerializeField] private MD_Item slotItem;
+
+        [Header("- 슬롯의 아이템 개수")]
+        [SerializeField] private int itemNum;
     }
 }

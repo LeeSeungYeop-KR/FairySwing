@@ -4,36 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace MiniDoodles
-{
-    /// <summary>
-    /// <para>작 성 자 : 이승엽</para>
-    /// <para>작 성 일 : 2020.11.28</para>
-    /// <para>내    용 : 캐릭터 카드의 데이터 구조체 </para>
-    /// </summary>
-    [System.Serializable]
-    public struct MD_CharacterData
-    {
-        /// <summary>
-        /// 캐릭터 아이디
-        /// </summary>
-        public int data_ID;
-
-        /// <summary>
-        /// 캐릭터 이름
-        /// </summary>
-        public string data_name;
-
-        /// <summary>
-        /// 캐릭터 레벨
-        /// </summary>
-        public int data_level;
-
-        /// <summary>
-        /// 캐릭터 별 개수
-        /// </summary>
-        public int data_StarNum;
-    }
-
+{    
     /// <summary>
     /// <para>작 성 자 : 이승엽</para>
     /// <para>작 성 일 : 2020.11.17</para>
