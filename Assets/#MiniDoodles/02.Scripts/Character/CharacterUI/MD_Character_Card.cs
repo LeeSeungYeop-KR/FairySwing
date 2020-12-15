@@ -79,6 +79,8 @@ namespace MiniDoodles
         {
             cardNum = _cardNum;     // 이 카드의 번호
             data = _data;           // 카드의 데이터
+
+            gameObject.name = _data.data_name + '_' + _data.data_StarNum + "_LV." + _data.data_level;
         }
 
         /// <summary>

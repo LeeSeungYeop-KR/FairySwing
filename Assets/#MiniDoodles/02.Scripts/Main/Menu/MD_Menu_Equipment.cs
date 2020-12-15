@@ -43,7 +43,7 @@ namespace MiniDoodles
         {
             for (int i = 0; i < button_BackArr.Length; i++)
             {
-                button_BackArr[i].SetActive(false);
+                button_BackArr[i].SetActive(false);     // 모든 버튼 비활성화
             }
         }
 
@@ -59,11 +59,11 @@ namespace MiniDoodles
             if (dataCharacter.data_ID == -1)     // 캐릭터 정해지지 않음
             {
                 dataCharacter = MD_XML.Instance.Func_GetCharacterCard()[0];
-                button_BackArr[0].SetActive(true);
+                button_BackArr[0].SetActive(true);      // 메인으로 돌아가기 버튼 활성화
             }
             else
             {
-                button_BackArr[1].SetActive(true);
+                button_BackArr[1].SetActive(true);      // 캐릭터 창으로 돌아가기 버튼 활성화
             }
 
             text_CharacterName.text = dataCharacter.data_name;
