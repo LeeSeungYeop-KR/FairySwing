@@ -34,6 +34,7 @@ namespace MiniDoodles
             Func_SetCharacter();
         }
 
+
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
         /// <para> 작 성 일 : 2020.12.15 </para>

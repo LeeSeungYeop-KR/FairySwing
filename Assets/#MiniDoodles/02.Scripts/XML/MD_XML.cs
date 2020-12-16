@@ -18,6 +18,9 @@ namespace MiniDoodles
         [Header("- 캐릭터 XML")]
         private XmlElement characterXML;
 
+        [Header("- 아이템 XML")]
+        private XmlElement itemXML;
+
         [HideInInspector]
         public bool isExist = false;
 
@@ -25,6 +28,7 @@ namespace MiniDoodles
         {
             Func_LoadPlayerXML();
             Func_LoadCharacterCardXML();
+            Func_LoadItemXML();
         }
 
         #region Create XML
@@ -95,6 +99,43 @@ namespace MiniDoodles
             Debug.Log(MD_PathDefine.XML_CharacterCardInformation + " XML Save Success");
         }
 
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.11 </para>
+        /// <para> 내    용 : 아이템 XML 파일을 생성하는 메서드 </para>
+        /// </summary>
+        private void Func_CreateItemInfoXML(List<MD_ItemData> _ItemDataList = null)
+        {
+            // xml 선언
+            XmlDocument _xmlDoc = new XmlDocument();
+            // xml 버전과 인코딩 방식 설정
+            _xmlDoc.AppendChild(_xmlDoc.CreateXmlDeclaration("1.0", "utf-8", "yes"));
+
+            #region Setting Node
+
+            // 루트 노드 생성
+            XmlNode _rootSet = _xmlDoc.CreateNode(XmlNodeType.Element, "ItemInfo", string.Empty);
+            _xmlDoc.AppendChild(_rootSet);
+
+            if (_ItemDataList == null)
+            {
+                // 자식 노드 생성
+                XmlElement _childSet = _xmlDoc.CreateElement("Item");
+                _childSet.SetAttribute("ID", "0");                  // 아이템 아이디
+                _childSet.SetAttribute("Name", "검");               // 아이템 이름
+                _childSet.SetAttribute("Description", "검이다");    // 아이템 설명
+                _childSet.SetAttribute("Type", "0");                // 아이템 타입
+
+                _rootSet.AppendChild(_childSet);
+            }
+
+
+            #endregion
+
+            _xmlDoc.Save(MD_PathDefine.XML_SavePath + MD_PathDefine.XML_ItemInformation + ".xml");
+            Debug.Log(MD_PathDefine.XML_ItemInformation + " XML Save Success");
+        }
+
         #endregion
 
         #region Load XML
@@ -153,7 +194,35 @@ namespace MiniDoodles
             }
         }
 
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.16 </para>
+        /// <para> 내    용 : 아이템 XML 파일을 불러오는 메서드 </para>
+        /// </summary>
+        private void Func_LoadItemXML()
+        {
+            TextAsset _textAsset = Resources.Load("XML/" + MD_PathDefine.XML_ItemInformation) as TextAsset;
+
+            if (_textAsset != null)
+            {
+                isExist = true;
+
+                XmlDocument _xmlDoc = new XmlDocument();
+                _xmlDoc.LoadXml(_textAsset.text);
+                itemXML = _xmlDoc["ItemInfo"];
+
+                Debug.Log("아이템의 개수 : " + itemXML.ChildNodes.Count);
+            }
+            else
+            {
+                Debug.Log(MD_PathDefine.XML_CharacterCardInformation + "Save 없음!");
+
+            }
+        }
+
         #endregion
+
+        #region Get Data
 
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
@@ -163,22 +232,47 @@ namespace MiniDoodles
         public List<MD_CharacterData> Func_GetCharacterCard()
         {
             List<MD_CharacterData> _characterCardList = new List<MD_CharacterData>();
-            int _num = 0;
 
             foreach (XmlElement item in characterXML.ChildNodes)
             {
                 MD_CharacterData _cardData = new MD_CharacterData();
-                _num++;     // 횟수 증가
 
                 _cardData.data_ID = int.Parse(item.GetAttribute("ID"));         // 아이디 값
                 _cardData.data_name = item.GetAttribute("Name");                // 이름
                 _cardData.data_level = int.Parse(item.GetAttribute("Level"));   // 레벨
                 _cardData.data_StarNum = int.Parse(item.GetAttribute("Rare"));  // Rare
-                
+
                 _characterCardList.Add(_cardData);                      // 카드 추가
             }
 
             return _characterCardList;
         }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.16 </para>
+        /// <para> 내    용 : 아이템 리스트를 건네주는 메서드 </para>
+        /// </summary>
+        public List<MD_ItemData> Func_GetItemData()
+        {
+            List<MD_ItemData> _itemDataList = new List<MD_ItemData>();
+
+            foreach (XmlElement item in itemXML.ChildNodes)
+            {
+                MD_ItemData _itemData = new MD_ItemData();
+
+                _itemData.data_ID = int.Parse(item.GetAttribute("ID"));                 // 아이디 값
+                _itemData.data_Name = item.GetAttribute("Name");                        // 아이템 이름
+                _itemData.data_Description = item.GetAttribute("Description");          // 아이템 설명
+                _itemData.data_Type = (ItemType)int.Parse(item.GetAttribute("Type"));   // 아이템 타입
+
+                _itemDataList.Add(_itemData);                      // 카드 추가
+            }
+
+            return _itemDataList;
+        }
+
+        #endregion
+
     }
 }

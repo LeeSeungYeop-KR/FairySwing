@@ -28,6 +28,7 @@
         public const string XML_SavePath = "Assets/Resources/XML/";
         public const string XML_PlayerInformation = "Player";
         public const string XML_CharacterCardInformation = "CharacterCard";
+        public const string XML_ItemInformation = "Item";
 
         public const string XML_Node_Setting = "SettingInfo/Setting";
 

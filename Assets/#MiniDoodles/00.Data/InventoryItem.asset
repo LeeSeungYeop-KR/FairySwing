@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d869abcca0b29164fb68be75601b7952, type: 3}
   m_Name: InventoryItem
   m_EditorClassIdentifier: 
+  prefab_InventorySlot: {fileID: 528967145207009970, guid: 29061e96b99fbe7479917bd709623ff2,
+    type: 3}
   sprite_VoidItem: {fileID: 21300000, guid: 9ced0b4dd1011274b9693bd1eb34a1d1, type: 3}
+  sprite_ItemArr: []

@@ -12,7 +12,7 @@ namespace MiniDoodles
     /// </summary>
     public enum ItemType
     {
-        Use, Eqipment, Quest, ETC
+        Weapon, Helmet, Armor, Gloves, Shoes, ETC
     }
 
     #endregion
