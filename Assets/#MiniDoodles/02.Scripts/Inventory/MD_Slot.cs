@@ -20,5 +20,18 @@ namespace MiniDoodles
 
         [Header("- 슬롯의 아이템 개수")]
         [SerializeField] private int itemNum;
+
+        private void OnEnable()
+        {
+            Func_SetItemNum();
+        }
+
+        private void Func_SetItemNum()
+        {
+            if (itemNum <= 1)
+            {
+                text_ItemNum.gameObject.SetActive(false);
+            }
+        }
     }
 }
