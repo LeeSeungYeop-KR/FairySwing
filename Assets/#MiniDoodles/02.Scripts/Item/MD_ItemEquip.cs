@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace MiniDoodles
 {  
@@ -13,6 +14,7 @@ namespace MiniDoodles
     {
         [Header("- 장비 아이템 데이터")]
         [SerializeField] private MD_ItemEquipmentData equipment_data;
+        
 
     }
 }

@@ -29,6 +29,7 @@ namespace MiniDoodles
             Func_LoadPlayerXML();
             Func_LoadCharacterCardXML();
             Func_LoadItemXML();
+
         }
 
         #region Create XML
@@ -38,7 +39,7 @@ namespace MiniDoodles
         /// <para> 작 성 일 : 2020.04.04 </para>
         /// <para> 내    용 : 플레이어 XML 파일을 생성하는 메서드 </para>
         /// </summary>
-        private void Func_CreatePlayerInfoXML()
+        private void Func_Create_Player_InfoXML()
         {
             // xml 선언
             XmlDocument _xmlDoc = new XmlDocument();
@@ -71,7 +72,7 @@ namespace MiniDoodles
         /// <para> 작 성 일 : 2020.12.11 </para>
         /// <para> 내    용 : 캐릭터 XML 파일을 생성하는 메서드 </para>
         /// </summary>
-        private void Func_CreateCharacterCardInfoXML()
+        private void Func_Create_CharacterCard_InfoXML()
         {
             // xml 선언
             XmlDocument _xmlDoc = new XmlDocument();
@@ -104,7 +105,7 @@ namespace MiniDoodles
         /// <para> 작 성 일 : 2020.12.11 </para>
         /// <para> 내    용 : 아이템 XML 파일을 생성하는 메서드 </para>
         /// </summary>
-        private void Func_CreateItemInfoXML(List<MD_ItemData> _ItemDataList = null)
+        private void Func_Create_Item_InfoXML(List<MD_ItemData> _ItemDataList = null)
         {
             // xml 선언
             XmlDocument _xmlDoc = new XmlDocument();
@@ -125,6 +126,7 @@ namespace MiniDoodles
                 _childSet.SetAttribute("Name", "검");               // 아이템 이름
                 _childSet.SetAttribute("Description", "검이다");    // 아이템 설명
                 _childSet.SetAttribute("Type", "0");                // 아이템 타입
+                _childSet.SetAttribute("Count", "1");               // 아이템 소지 개수
 
                 _rootSet.AppendChild(_childSet);
             }
@@ -164,7 +166,7 @@ namespace MiniDoodles
             else
             {
                 Debug.Log(MD_PathDefine.XML_PlayerInformation + "Save 없음!");
-                Func_CreatePlayerInfoXML();
+                Func_Create_Player_InfoXML();
             }
         }
 
@@ -257,6 +259,11 @@ namespace MiniDoodles
         {
             List<MD_ItemData> _itemDataList = new List<MD_ItemData>();
 
+            if (itemXML == null)
+            {
+                return _itemDataList;
+            }
+
             foreach (XmlElement item in itemXML.ChildNodes)
             {
                 MD_ItemData _itemData = new MD_ItemData();
@@ -265,6 +272,7 @@ namespace MiniDoodles
                 _itemData.data_Name = item.GetAttribute("Name");                        // 아이템 이름
                 _itemData.data_Description = item.GetAttribute("Description");          // 아이템 설명
                 _itemData.data_Type = (ItemType)int.Parse(item.GetAttribute("Type"));   // 아이템 타입
+                _itemData.data_Count = int.Parse(item.GetAttribute("Count"));           // 아이템 소지 개수
 
                 _itemDataList.Add(_itemData);                      // 카드 추가
             }

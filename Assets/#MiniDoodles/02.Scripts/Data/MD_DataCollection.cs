@@ -79,6 +79,11 @@ namespace MiniDoodles
         /// 아이템 타입
         /// </summary>
         public ItemType data_Type;
+
+        /// <summary>
+        /// 아이템 소지 개수
+        /// </summary>
+        public int data_Count;
     }
 
     #endregion

@@ -12,26 +12,15 @@ namespace MiniDoodles
     /// </summary>
     public class MD_Slot : MonoBehaviour
     {
-        [Header("- 슬롯의 아이템 개수 Text")]
-        [SerializeField] private Text text_ItemNum;
-
         [Header("- 슬롯의 아이템")]
         [SerializeField] private MD_Item slotItem;
-
-        [Header("- 슬롯의 아이템 개수")]
-        [SerializeField] private int itemNum;
-
-        private void OnEnable()
+        
+        public void Func_SetSlotData(MD_ItemData _itemData, MD_Drag_ItemImage _dragImage)
         {
-            Func_SetItemNum();
+            slotItem.Func_SetItemData(_itemData);
+            slotItem.GetComponent<MD_ItemDrag>()?.Func_SetDragImage(_dragImage);
         }
 
-        private void Func_SetItemNum()
-        {
-            if (itemNum <= 1)
-            {
-                text_ItemNum.gameObject.SetActive(false);
-            }
-        }
+        
     }
 }
