@@ -12,7 +12,7 @@ namespace MiniDoodles
     public class MD_Inventory : MonoBehaviour
     {
         [Header("- 인벤토리 타입")]
-        [SerializeField] protected ItemType inventoryType;
+        public ItemType inventoryType;
 
         [Header("- 슬롯을 모으는 오브젝트의 Transfrom")]
         [SerializeField] private int rowSlotNum = 4;
@@ -25,23 +25,17 @@ namespace MiniDoodles
 
         [Header("- 아이템 드래그 이미지")] 
         [SerializeField] protected MD_Drag_ItemImage itemDragOBJ;      // 아이템 드래그 이미지
-
-        protected virtual void Start()
-        {
-            Func_LoadItemInformation();
-        }
-
-
+        
         #region 아이템 로드
 
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
         /// <para> 작 성 일 : 2020.12.16 </para>
-        /// <para> 내    용 : 인벤토리 타입에 맞게 아이템을 불러오는 기능 </para>
+        /// <para> 내    용 : 타입에 맞는 아이템데이터를 받아서 슬롯을 설정하고 각 슬롯에 아이템을 저장하는 기능 </para>
         /// </summary>
-        private void Func_LoadItemInformation()
+        public void Func_LoadItemInformation(List<MD_ItemData> _dataList)
         {
-            List<MD_ItemData> _itemDataList = MD_XML.Instance.Func_GetItemData();
+            List<MD_ItemData> _itemDataList = _dataList;
 
             if (Func_AddSlotAndCheckSlot(_itemDataList.Count))      // 아이템 개수 만큼 슬롯 늘리기
             {

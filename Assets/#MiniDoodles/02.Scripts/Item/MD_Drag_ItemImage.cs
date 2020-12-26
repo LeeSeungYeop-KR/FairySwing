@@ -38,7 +38,7 @@ namespace MiniDoodles
         {
             if (itemData.data_ID != -1)
             {
-                imageItem.sprite = MD_ScriptableManager.Instance.Func_GetScriptable<MD_Inventory_Setting>().sprite_ItemArr[itemData.data_ID];
+                imageItem.sprite = MD_ScriptableManager.Instance.Func_GetScriptable<MD_Inventory_Setting>().Func_GetIDImage(itemData.data_ID);
             }
         }
 

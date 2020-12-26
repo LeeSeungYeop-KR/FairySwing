@@ -24,6 +24,12 @@ namespace MiniDoodles
         [Header("- 장비창을 오픈 할 캐릭터의 번호")]
         public MD_CharacterData characterData;
 
+        [Header("- 인벤토리에서 아이템을 스왑할껀지 체크")]
+        public bool isSwap;
+
+        public MD_Item[] swapItem = new MD_Item[2];
+        public MD_ItemData[] swapData = new MD_ItemData[2];
+
         protected override void Awake()
         {
             base.Awake();
@@ -113,6 +119,24 @@ namespace MiniDoodles
             menuArr[2].SetActive(true);
         }
 
-        
+        public void Func_ItemSwapStart(MD_ItemData _data, MD_Item _item = null)
+        {
+            swapData[0] = _data;
+            swapItem[0] = _item;
+        }
+
+        public void Func_ItemSwap(MD_ItemData _data, MD_Item _item)
+        {
+            if (swapItem[0] == null)
+            {
+                return;
+            }
+
+            swapData[1] = _data;
+            swapItem[1] = _item;
+
+            swapItem[0].Func_SetItemData(swapData[1]);
+            swapItem[1].Func_SetItemData(swapData[0]);
+        }
     }
 }

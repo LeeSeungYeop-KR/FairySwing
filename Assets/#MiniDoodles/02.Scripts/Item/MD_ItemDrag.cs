@@ -12,14 +12,14 @@ namespace MiniDoodles
     /// </summary>
     public class MD_ItemDrag : MonoBehaviour
     {
-        private MD_Item item;               // 아이템
-        private EventTrigger eventTrigger;  // 이벤트트리거
-        private MD_Drag_ItemImage dragImage;        // 드래그 할 이미지
-        private Camera cam;                 // 드래그 이미지를 카메라의 화면의 어디 위치에 나타낼지 알아야 해서 캐싱하는 메인카메라
+        private MD_Item item;                   // 아이템
+        private EventTrigger eventTrigger;      // 이벤트트리거
+        private MD_Drag_ItemImage dragImage;    // 드래그 할 이미지
+        private Camera cam;                     // 드래그 이미지를 카메라의 화면의 어디 위치에 나타낼지 알아야 해서 캐싱하는 메인카메라
 
-        private MD_ItemData itemData;
-        private bool isVoid;                // 아이템이 비어있는지 체크
-
+        private bool isVoid;                    // 아이템이 비어있는지 체크
+        private bool isDragStart;               // 드래그를 하는지 체크
+        
         private void Awake()
         {
             // 이벤트트리거 캐싱
@@ -68,6 +68,15 @@ namespace MiniDoodles
             });
             eventTrigger.triggers.Add(_entryClick);
 
+            // 드래그 시작
+            EventTrigger.Entry _entryDragStart = new EventTrigger.Entry();
+            _entryDragStart.eventID = EventTriggerType.BeginDrag;
+            _entryDragStart.callback.AddListener((data) =>
+            {
+                Func_StartDrag();
+            });
+            eventTrigger.triggers.Add(_entryDragStart);
+
             // 드래그
             EventTrigger.Entry _entryDrag = new EventTrigger.Entry();
             _entryDrag.eventID = EventTriggerType.Drag;
@@ -77,6 +86,15 @@ namespace MiniDoodles
             });
             eventTrigger.triggers.Add(_entryDrag);
 
+            // 드래그 끝
+            EventTrigger.Entry _entryDragEnd = new EventTrigger.Entry();
+            _entryDragEnd.eventID = EventTriggerType.EndDrag;
+            _entryDragEnd.callback.AddListener((data) =>
+            {
+                Func_EndDrag();
+            });
+            eventTrigger.triggers.Add(_entryDragEnd);
+
             // 드랍
             EventTrigger.Entry _entryDrop = new EventTrigger.Entry();
             _entryDrop.eventID = EventTriggerType.Drop;
@@ -85,15 +103,6 @@ namespace MiniDoodles
                 Func_ItemDrop();
             });
             eventTrigger.triggers.Add(_entryDrop);
-
-            // 업
-            EventTrigger.Entry _entryUp = new EventTrigger.Entry();
-            _entryUp.eventID = EventTriggerType.PointerUp;
-            _entryUp.callback.AddListener((data) =>
-            {
-                Func_ItemPointerUp();
-            });
-            eventTrigger.triggers.Add(_entryUp);
         }
 
         /// <summary>
@@ -118,11 +127,11 @@ namespace MiniDoodles
         private void Func_ItemPointerDown()
         {
             Debug.Log("아이템 다운");
-            itemData = item.itemData;
-            isVoid = (itemData.data_ID == -1);  // 비어있는지 체크
+            isVoid = (item.itemData.data_ID == -1);  // 비어있는지 체크
 
             dragImage.gameObject.SetActive(true);
-            dragImage.DragItemData = itemData;
+            dragImage.DragItemData = item.itemData;
+
         }
 
         #endregion
@@ -136,7 +145,7 @@ namespace MiniDoodles
         /// </summary>
         private void Func_ItemClick()
         {
-            if (isVoid)
+            if (isVoid || isDragStart)
             {
                 return;
             }
@@ -150,6 +159,24 @@ namespace MiniDoodles
 
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.26 </para>
+        /// <para> 내    용 : 아이템 드래그를 시작했을 때 호출되는 기능 </para>
+        /// </summary>
+        private void Func_StartDrag()
+        {
+            if (isVoid)
+            {
+                MD_PlayManager.Instance.Func_ItemSwapStart(item.itemData);
+                return;
+            }
+
+            isDragStart = true;
+            item.Func_HideItem();
+            MD_PlayManager.Instance.Func_ItemSwapStart(item.itemData, item);
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
         /// <para> 작 성 일 : 2020.12.17 </para>
         /// <para> 내    용 : 아이템을 드래그했을 때 호출되는 기능 </para>
         /// </summary>
@@ -159,12 +186,31 @@ namespace MiniDoodles
             {
                 return;
             }
-
+            
             Debug.Log("아이템 드래그");
-
+            
             Vector2 _dragPosition = Input.mousePosition;
             Vector2 _worldPosition = cam.ScreenToWorldPoint(_dragPosition);
             dragImage.transform.position = _worldPosition;
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.26 </para>
+        /// <para> 내    용 : 아이템 드래그를 끝냈을 때 호출되는 기능 </para>
+        /// </summary>
+        private void Func_EndDrag()
+        {
+            if (MD_PlayManager.Instance.isSwap)
+            {
+                MD_PlayManager.Instance.isSwap = false;
+                return;
+            }
+
+            Debug.Log("드래그 초기화");
+            isDragStart = false;
+            dragImage.gameObject.SetActive(false);
+            item.Func_SetItemData(item.itemData);
         }
 
         #endregion
@@ -178,38 +224,27 @@ namespace MiniDoodles
         /// </summary>
         private void Func_ItemDrop()
         {
-            if (isVoid)
-            {
-                return;
-            }
-
             Debug.Log("아이템 스왑");
-            
-        }
+            MD_PlayManager.Instance.isSwap = true;
 
-        #endregion
-
-        #region 포인터 업했을 때 메서드
-
-        /// <summary>
-        /// <para> 작 성 자 : 이승엽 </para>
-        /// <para> 작 성 일 : 2020.12.17 </para>
-        /// <para> 내    용 : 아이템에서 손을 땠을 때 호출되는 기능 </para>
-        /// </summary>
-        private void Func_ItemPointerUp()
-        {
-            if (isVoid)
-            {
-                return;
-            }
-
-            Debug.Log("아이템 포인트 업");
+            Func_ItemSwap();
             dragImage.gameObject.SetActive(false);
         }
 
-
         #endregion
 
+        #region 기능
 
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.26 </para>
+        /// <para> 내    용 : 아이템을 서로 바꾸는 기능 </para>
+        /// </summary>
+        private void Func_ItemSwap()
+        {
+            MD_PlayManager.Instance.Func_ItemSwap(item.itemData, item);
+        }
+
+        #endregion
     }
 }

@@ -16,5 +16,25 @@ namespace MiniDoodles
         
         [Header("- 슬롯 아이템 이미지 배열")]
         public Sprite[] sprite_ItemArr;
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.26 </para>
+        /// <para> 내    용 : 아이템의 아이디에 따라 그에 맞는 이미지를 불러오는 기능 </para>
+        /// </summary>
+        /// <param name="_id">아이템의 아이디 값</param>
+        /// <returns>아이디에 맞는 이미지, 없으면 null</returns>
+        public Sprite Func_GetIDImage(int _id)
+        {
+            for (int i = 0; i < sprite_ItemArr.Length; i++)
+            {
+                if (string.Equals(sprite_ItemArr[i].name, _id.ToString()))
+                {
+                    return sprite_ItemArr[i];
+                }
+            }
+
+            return null;
+        }
     }
 }

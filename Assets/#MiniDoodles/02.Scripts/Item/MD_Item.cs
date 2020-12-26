@@ -49,7 +49,6 @@ namespace MiniDoodles
         {
             // 비어있는 아이템 이미지
             image_item.sprite = MD_ScriptableManager.Instance.Func_GetScriptable<MD_Inventory_Setting>().sprite_VoidItem;
-
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace MiniDoodles
         /// </summary>
         protected void Func_SetImage(int _itemID)
         {
-            image_item.sprite = MD_ScriptableManager.Instance.Func_GetScriptable<MD_Inventory_Setting>().sprite_ItemArr[_itemID];
+            image_item.sprite = MD_ScriptableManager.Instance.Func_GetScriptable<MD_Inventory_Setting>().Func_GetIDImage(_itemID);
         }
 
         /// <summary>
@@ -75,9 +74,23 @@ namespace MiniDoodles
             }
             else
             {
-                text_ItemNum.gameObject.SetActive(true);
                 text_ItemNum.text = _itemCount.ToString();
+                text_ItemNum.gameObject.SetActive(true);
             }
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.26 </para>
+        /// <para> 내    용 : 아이템을 집었을 때 슬롯에 있는 아이템을 숨기는 기능</para>
+        /// </summary>
+        public void Func_HideItem()
+        {
+            // 이미지 숨기기
+            image_item.sprite = MD_ScriptableManager.Instance.Func_GetScriptable<MD_Inventory_Setting>().sprite_VoidItem;
+
+            // 텍스트 숨기기
+            text_ItemNum.gameObject.SetActive(false);
         }
     }
 }
