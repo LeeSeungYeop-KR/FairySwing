@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 528967144395181765}
   - component: {fileID: 528967144395181764}
   - component: {fileID: 528967144395181767}
-  - component: {fileID: 528967144395181766}
+  - component: {fileID: 3399018864388597204}
+  - component: {fileID: 1463952874}
   m_Layer: 5
-  m_Name: Item
+  m_Name: Weapon Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,38 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!114 &528967144395181766
+  m_Delegates: []
+--- !u!114 &3399018864388597204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,20 +99,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 528967144395181760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a01ff1bff323b0418c20e8d5c06b3e5, type: 3}
+  m_Script: {fileID: 11500000, guid: f6c8ee0d0100bd140abcecbe379566cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image_item: {fileID: 528967144395181764}
+  text_ItemNum: {fileID: 528967145145938514}
   itemData:
     data_ID: 0
     data_Name: 
     data_Description: 
     data_Type: 0
-  equipment_data:
+    data_Count: 0
+  itemInformation: {fileID: 0}
+  weapon_data:
     data_Attack: 0
     data_Magic: 0
-    data_AttackDefence: 0
+    data_AttackSpeed: 0
     data_MagicDefence: 0
+--- !u!114 &1463952874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528967144395181760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0127e8d257bb23942a60a2741845d539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &528967145145938524
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +205,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 
 --- !u!1 &528967145207009970
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +219,7 @@ GameObject:
   - component: {fileID: 528967145207009969}
   - component: {fileID: 528967145207009968}
   m_Layer: 5
-  m_Name: Image_Slot (1)
+  m_Name: Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +232,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528967145207009970}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -309,6 +295,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb35b4fba14295d4a8244a6b8770528d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text_ItemNum: {fileID: 528967145145938514}
-  slotItem: {fileID: 528967144395181766}
-  itemNum: 0
+  slotItem: {fileID: 0}

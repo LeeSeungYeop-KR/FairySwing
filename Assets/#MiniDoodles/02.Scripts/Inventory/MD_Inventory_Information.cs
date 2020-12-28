@@ -18,9 +18,6 @@ namespace MiniDoodles
         [Header("- 아이템 설명 텍스트")]
         [SerializeField] private Text text_ItemDescription;
 
-        [Header("- 아이템 이미지")]
-        [SerializeField] private Image image_Item;
-
         [Header("- 아이템 데이터")]
         [SerializeField] private MD_ItemData itemData;
 
@@ -29,12 +26,11 @@ namespace MiniDoodles
         /// <para> 작 성 일 : 2020.12.28 </para>
         /// <para> 내    용 : 인벤토리의 정보창을 설정하고 활성화 하는 기능 </para>
         /// </summary>
-        public void Func_SetInformation(MD_ItemData _data, Sprite _sprite)
+        public void Func_SetInformation(MD_ItemData _data)
         {
             itemData = _data;
             text_ItemName.text = itemData.data_Name;
             text_ItemDescription.text = itemData.data_Description;
-            image_Item.sprite = _sprite;
 
             gameObject.SetActive(true);
         }

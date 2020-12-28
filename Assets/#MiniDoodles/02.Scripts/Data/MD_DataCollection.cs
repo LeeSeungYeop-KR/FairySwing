@@ -93,25 +93,25 @@ namespace MiniDoodles
     /// <summary>
     /// <para>작 성 자 : 이승엽</para>
     /// <para>작 성 일 : 2020.12.15</para>
-    /// <para>내    용 : 장비 아이템의 데이터 구조체 </para>
+    /// <para>내    용 : 무기 아이템의 데이터 구조체 </para>
     /// </summary>
     [System.Serializable]
-    public struct MD_ItemEquipmentData
+    public struct MD_ItemWeaponData
     {
         /// <summary>
-        /// 아이템 공격력
+        /// 공격력
         /// </summary>
         public int data_Attack;
 
         /// <summary>
-        /// 아이템 마력
+        /// 마력
         /// </summary>
         public int data_Magic;
 
         /// <summary>
-        /// 아이템 물리방어력
+        /// 공격속도
         /// </summary>
-        public int data_AttackDefence;
+        public int data_AttackSpeed;
 
         /// <summary>
         /// 아이템 마법방어력

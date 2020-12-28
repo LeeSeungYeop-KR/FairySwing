@@ -109,7 +109,7 @@ namespace MiniDoodles
 
         public void Func_ItemInformation()
         {
-            itemInformation.Func_SetInformation(itemData, image_item.sprite);
+            itemInformation.Func_SetInformation(itemData);
         }
     }
 }
