@@ -269,9 +269,6 @@ namespace MiniDoodles
                 MD_ItemData _itemData = new MD_ItemData();
 
                 _itemData.data_ID = int.Parse(item.GetAttribute("ID"));                 // 아이디 값
-                _itemData.data_Name = item.GetAttribute("Name");                        // 아이템 이름
-                _itemData.data_Description = item.GetAttribute("Description");          // 아이템 설명
-                _itemData.data_Type = (ItemType)int.Parse(item.GetAttribute("Type"));   // 아이템 타입
                 _itemData.data_Count = int.Parse(item.GetAttribute("Count"));           // 아이템 소지 개수
 
                 _itemDataList.Add(_itemData);                      // 카드 추가

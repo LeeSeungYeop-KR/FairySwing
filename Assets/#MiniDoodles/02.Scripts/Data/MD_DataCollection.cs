@@ -10,7 +10,7 @@ namespace MiniDoodles
     /// <para>작 성 일 : 2020.05.16</para>
     /// <para>내    용 : 아이템의 타입</para>
     /// </summary>
-    public enum ItemType
+    public enum TYPE_ITEM
     {
         Weapon, Helmet, Armor, Gloves, Shoes, ETC
     }
@@ -78,7 +78,7 @@ namespace MiniDoodles
         /// <summary>
         /// 아이템 타입
         /// </summary>
-        public ItemType data_Type;
+        public TYPE_ITEM data_Type;
 
         /// <summary>
         /// 아이템 소지 개수

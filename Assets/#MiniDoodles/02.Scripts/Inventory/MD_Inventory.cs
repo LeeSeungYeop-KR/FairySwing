@@ -12,7 +12,7 @@ namespace MiniDoodles
     public class MD_Inventory : MonoBehaviour
     {
         [Header("- 인벤토리 타입")]
-        public ItemType inventoryType;
+        public TYPE_ITEM inventoryType;
 
         [Header("- 슬롯을 모으는 오브젝트의 Transfrom")]
         [SerializeField] private int rowSlotNum = 4;

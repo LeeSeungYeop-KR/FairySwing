@@ -34,7 +34,7 @@ namespace MiniDoodles
         /// </summary>
         private void Func_SetInventoryData()
         {
-            List<MD_ItemData> _allList = MD_XML.Instance.Func_GetItemData();
+            List<MD_ItemData> _allList = MD_DataManager.Instance.Func_GetPlayerItemList();
 
             for (int i = 0; i < inventoryArr.Length; i++)
             {

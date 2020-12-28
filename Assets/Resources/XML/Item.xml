@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <ItemInfo>
-  <Item ID="0" Name="검" Description="검이다" Type="0" Count="2" />
-  <Item ID="1" Name="활" Description="활이다" Type="0" Count="3" />
-  <Item ID="100" Name="초보자의 헬멧" Description="머리 방어구" Type="1" Count="1" />
+  <Item ID="0" Count="2" />
+  <Item ID="1" Count="3" />
+  <Item ID="100" Count="1" />
 </ItemInfo>

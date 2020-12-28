@@ -126,7 +126,6 @@ namespace MiniDoodles
         /// </summary>
         private void Func_ItemPointerDown()
         {
-            Debug.Log("아이템 다운");
             isVoid = (item.itemData.data_ID == -1);  // 비어있는지 체크
 
             dragImage.gameObject.SetActive(true);
@@ -186,9 +185,7 @@ namespace MiniDoodles
             {
                 return;
             }
-            
-            Debug.Log("아이템 드래그");
-            
+                        
             Vector2 _dragPosition = Input.mousePosition;
             Vector2 _worldPosition = cam.ScreenToWorldPoint(_dragPosition);
             dragImage.transform.position = _worldPosition;
@@ -207,7 +204,6 @@ namespace MiniDoodles
                 return;
             }
 
-            Debug.Log("드래그 초기화");
             isDragStart = false;
             dragImage.gameObject.SetActive(false);
             item.Func_SetItemData(item.itemData);
@@ -224,7 +220,6 @@ namespace MiniDoodles
         /// </summary>
         private void Func_ItemDrop()
         {
-            Debug.Log("아이템 스왑");
             MD_PlayManager.Instance.isSwap = true;
 
             Func_ItemSwap();
