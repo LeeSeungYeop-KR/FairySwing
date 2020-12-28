@@ -123,14 +123,22 @@ namespace MiniDoodles
                 // 자식 노드 생성
                 XmlElement _childSet = _xmlDoc.CreateElement("Item");
                 _childSet.SetAttribute("ID", "0");                  // 아이템 아이디
-                _childSet.SetAttribute("Name", "검");               // 아이템 이름
-                _childSet.SetAttribute("Description", "검이다");    // 아이템 설명
-                _childSet.SetAttribute("Type", "0");                // 아이템 타입
                 _childSet.SetAttribute("Count", "1");               // 아이템 소지 개수
 
                 _rootSet.AppendChild(_childSet);
             }
+            else
+            {
+                for (int i = 0; i < _ItemDataList.Count; i++)
+                {
+                    // 자식 노드 생성
+                    XmlElement _childSet = _xmlDoc.CreateElement("Item");
+                    _childSet.SetAttribute("ID", _ItemDataList[i].data_ID.ToString());          // 아이템 아이디
+                    _childSet.SetAttribute("Count", _ItemDataList[i].data_Count.ToString());    // 아이템 소지 개수
 
+                    _rootSet.AppendChild(_childSet);
+                }
+            }
 
             #endregion
 

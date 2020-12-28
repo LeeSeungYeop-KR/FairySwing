@@ -20,7 +20,10 @@ namespace MiniDoodles
 
         [Header("- 아이템 데이터")]
         public MD_ItemData itemData;
-        
+
+        [Header("- 아이템 정보창")]
+        [SerializeField] private MD_Inventory_Information itemInformation;
+
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
         /// <para> 작 성 일 : 2020.12.15 </para>
@@ -29,6 +32,7 @@ namespace MiniDoodles
         public void Func_SetItemData(MD_ItemData _data)
         {
             itemData = _data;
+
             if (itemData.data_ID != -1)
             {
                 Func_SetImage(_data.data_ID);           // 이미지 설정
@@ -38,6 +42,16 @@ namespace MiniDoodles
             {
                 Func_VoidData();
             }
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.28 </para>
+        /// <para> 내    용 : 아이템의 정보창을 띄울 객체 캐싱 기능</para>
+        /// </summary>
+        public void Func_SetItemInformationOBJ(MD_Inventory_Information _Information)
+        {
+            itemInformation = _Information;
         }
 
         /// <summary>
@@ -91,6 +105,11 @@ namespace MiniDoodles
 
             // 텍스트 숨기기
             text_ItemNum.gameObject.SetActive(false);
+        }
+
+        public void Func_ItemInformation()
+        {
+            itemInformation.Func_SetInformation(itemData, image_item.sprite);
         }
     }
 }

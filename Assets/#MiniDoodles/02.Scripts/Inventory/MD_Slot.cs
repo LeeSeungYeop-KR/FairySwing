@@ -15,12 +15,11 @@ namespace MiniDoodles
         [Header("- 슬롯의 아이템")]
         [SerializeField] private MD_Item slotItem;
         
-        public void Func_SetSlotData(MD_ItemData _itemData, MD_Drag_ItemImage _dragImage)
+        public void Func_SetSlotData(MD_ItemData _itemData, MD_Drag_ItemImage _dragImage, MD_Inventory_Information _Information)
         {
             slotItem.Func_SetItemData(_itemData);
+            slotItem.Func_SetItemInformationOBJ(_Information);
             slotItem.GetComponent<MD_ItemDrag>()?.Func_SetDragImage(_dragImage);
-        }
-
-        
+        }        
     }
 }

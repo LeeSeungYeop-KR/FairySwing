@@ -8,15 +8,15 @@ namespace MiniDoodles
 
     public class MD_Slot_Tab : MonoBehaviour
     {
-        [Space(10)]
-        [Header("- Test")]
         [Header("- 기본 컬러")]
+        [Header("- Test")]
         [SerializeField] private Color nomalColor;
 
         [Header("- 클릭 시 컬러")]
         [SerializeField] private Color clickColor;
 
         [Header("- 탭 이미지 배열")]
+        [Space(20)]
         [SerializeField] private Image[] tabImageArr;
 
         [Header("- 탭 인벤토리")]
@@ -24,7 +24,7 @@ namespace MiniDoodles
 
         private void Start()
         {
-            Func_SetInventoryData();
+            Func_SetInventoryData();        // 플레이어의 인벤토리 데이터 설정
         }
         
         /// <summary>

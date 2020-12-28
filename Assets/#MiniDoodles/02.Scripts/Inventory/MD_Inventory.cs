@@ -21,10 +21,13 @@ namespace MiniDoodles
         [SerializeField] private MD_ScrollView slotPool;
 
         [Header("- 슬롯 리스트")]
-        [SerializeField] protected List<MD_Slot> slotList;     // 슬롯 리스트
+        [SerializeField] protected List<MD_Slot> slotList;          // 슬롯 리스트
 
         [Header("- 아이템 드래그 이미지")] 
-        [SerializeField] protected MD_Drag_ItemImage itemDragOBJ;      // 아이템 드래그 이미지
+        [SerializeField] protected MD_Drag_ItemImage itemDragOBJ;   // 아이템 드래그 이미지
+
+        [Header("- 아이템 정보창")]
+        [SerializeField] protected MD_Inventory_Information informationOBJ;       // 아이템의 정보창
         
         #region 아이템 로드
 
@@ -42,7 +45,7 @@ namespace MiniDoodles
                 // 아이템이 슬롯보다 많음
                 for (int i = 0; i < _itemDataList.Count; i++)
                 {
-                    slotList[i].Func_SetSlotData(_itemDataList[i], itemDragOBJ);
+                    slotList[i].Func_SetSlotData(_itemDataList[i], itemDragOBJ, informationOBJ);
                 }
             }
             else
@@ -52,7 +55,7 @@ namespace MiniDoodles
                 {
                     if (i <= _itemDataList.Count - 1)
                     {
-                        slotList[i].Func_SetSlotData(_itemDataList[i], itemDragOBJ);
+                        slotList[i].Func_SetSlotData(_itemDataList[i], itemDragOBJ, informationOBJ);
                     }
                     else
                     {
@@ -60,7 +63,7 @@ namespace MiniDoodles
                         _voidData.data_ID = -1;
                         _voidData.data_Type = inventoryType;
 
-                        slotList[i].Func_SetSlotData(_voidData, itemDragOBJ);
+                        slotList[i].Func_SetSlotData(_voidData, itemDragOBJ, informationOBJ);
                     }
                 }
             }
@@ -99,5 +102,7 @@ namespace MiniDoodles
         }
 
         #endregion
+
+
     }
 }

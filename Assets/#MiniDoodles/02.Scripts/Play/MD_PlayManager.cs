@@ -52,7 +52,7 @@ namespace MiniDoodles
             image_Fade.gameObject.SetActive(true);
         }
         #region Button 메서드
-        
+
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
         /// <para> 작 성 일 : 2020.12.14 </para>
@@ -135,8 +135,15 @@ namespace MiniDoodles
             swapData[1] = _data;
             swapItem[1] = _item;
 
-            swapItem[0].Func_SetItemData(swapData[1]);
-            swapItem[1].Func_SetItemData(swapData[0]);
+            if (swapItem[0] != null && swapItem[1] != null)
+            {
+                swapItem[0].Func_SetItemData(swapData[1]);
+                swapItem[1].Func_SetItemData(swapData[0]);
+            }
+
+            // 초기화
+            swapItem[0] = null;
+            swapItem[1] = null;
         }
     }
 }

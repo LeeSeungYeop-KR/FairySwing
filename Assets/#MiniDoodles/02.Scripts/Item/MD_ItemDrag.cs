@@ -150,6 +150,7 @@ namespace MiniDoodles
             }
 
             Debug.Log("정보 보기");
+            item.Func_ItemInformation();
         }
 
         #endregion
