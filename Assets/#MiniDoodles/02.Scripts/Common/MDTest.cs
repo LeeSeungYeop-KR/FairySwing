@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MiniDoodles
 {
@@ -14,9 +15,12 @@ namespace MiniDoodles
 
         [SerializeField] private MD_Item item;
 
-        private void Start()
+
+
+        private void OnEnable()
         {
-            Func_ReadCharacterCard();
+            Text tt = GetComponent<Text>();
+            tt.GetComponent<RectTransform>().sizeDelta = new Vector2(330f, tt.preferredHeight);
         }
 
         private void Func_ItemRead()
