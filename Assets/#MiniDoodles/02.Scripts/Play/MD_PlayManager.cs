@@ -119,12 +119,22 @@ namespace MiniDoodles
             menuArr[2].SetActive(true);
         }
 
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.14 </para>
+        /// <para> 내    용 : 아이템 스왑을 할 때 첫 아이템의 값을 설정하는 메서드 </para>
+        /// </summary>
         public void Func_ItemSwapStart(MD_ItemData _data, MD_Item _item = null)
         {
             swapData[0] = _data;
             swapItem[0] = _item;
         }
 
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.12.14 </para>
+        /// <para> 내    용 : 첫 아이템의 값 확인 후 스왑할 아이템의 값을 설정하고 서로 스왑해주는 메서드 </para>
+        /// </summary>
         public void Func_ItemSwap(MD_ItemData _data, MD_Item _item)
         {
             if (swapItem[0] == null)
@@ -141,9 +151,20 @@ namespace MiniDoodles
                 swapItem[1].Func_SetItemData(swapData[0]);
             }
 
+            Func_InitItemSwap();
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2020.01.04 </para>
+        /// <para> 내    용 : 아이템 스왑을 초기화 하는 메서드 </para>
+        /// </summary>
+        public void Func_InitItemSwap()
+        {
             // 초기화
             swapItem[0] = null;
             swapItem[1] = null;
         }
+  
     }
 }

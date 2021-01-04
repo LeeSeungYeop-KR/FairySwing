@@ -60,6 +60,7 @@ namespace MiniDoodles
                 inventoryArr[i].gameObject.SetActive(false);
             }
 
+            MD_PlayManager.Instance.Func_InitItemSwap();
             tabImageArr[_clickNum].color = clickColor;
             inventoryArr[_clickNum].gameObject.SetActive(true);
         }
