@@ -120,4 +120,22 @@ namespace MiniDoodles
     }
 
     #endregion
+
+    #region 랜덤박스 데이터
+
+    [System.Serializable]
+    public struct MD_RandomBoxData
+    {
+        /// <summary>
+        /// 아이템 인덱스
+        /// </summary>
+        public string itemIndex;
+
+        /// <summary>
+        /// 확률
+        /// </summary>
+        public float probability;
+    }
+
+    #endregion
 }

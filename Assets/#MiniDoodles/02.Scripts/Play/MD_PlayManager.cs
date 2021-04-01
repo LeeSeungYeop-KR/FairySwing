@@ -106,12 +106,46 @@ namespace MiniDoodles
 
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2021.04.01 </para>
+        /// <para> 내    용 : 제작 버튼을 눌렀을 때 호출되는 버튼 메서드 </para>
+        /// </summary>
+        public void Button_Production()
+        {
+            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
+            menuArr[3].SetActive(true);     // 뽑기 열기
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2021.04.01 </para>
+        /// <para> 내    용 : 편성 버튼을 눌렀을 때 호출되는 버튼 메서드 </para>
+        /// </summary>
+        public void Button_Organization()
+        {
+            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
+            menuArr[4].SetActive(true);     // 뽑기 열기
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2021.04.01 </para>
+        /// <para> 내    용 : 스토리 버튼을 눌렀을 때 호출되는 버튼 메서드 </para>
+        /// </summary>
+        public void Button_Story()
+        {
+            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
+            menuArr[5].SetActive(true);     // 뽑기 열기
+        }
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
         /// <para> 작 성 일 : 2021.03.02 </para>
         /// <para> 내    용 : 뽑기 버튼을 눌렀을 때 호출되는 버튼 메서드 </para>
         /// </summary>
         public void Button_RandomBox()
         {
-
+            Func_AllMenuDisable();          // 모든 메뉴를 닫는 기능
+            menuArr[6].SetActive(true);     // 뽑기 열기
         }
 
         #endregion
@@ -176,6 +210,6 @@ namespace MiniDoodles
             swapItem[0] = null;
             swapItem[1] = null;
         }
-  
+
     }
 }

@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/#MiniDoodles/01.Scenes/#00.Intro.unity
     guid: 471587f45236c0342bcc1d5765afe630
-  - enabled: 1
+  - enabled: 0
     path: Assets/#MiniDoodles/01.Scenes/#00.Loading.unity
     guid: 529b10c6cecc2e84493c4fa515a43b1d
-  - enabled: 1
+  - enabled: 0
     path: Assets/#MiniDoodles/01.Scenes/#01.Main.unity
     guid: 79a2b53aceae0f04b9e1f93e42939d86
+  - enabled: 1
+    path: Assets/#MiniDoodles/01.Scenes/Test.unity
+    guid: 9f0c167d5fc5d4140a605ff2dee1deb5
   m_configObjects: {}
