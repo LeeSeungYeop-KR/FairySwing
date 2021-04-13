@@ -10,9 +10,16 @@ namespace MiniDoodles
         [Header("- 사용하는 스크립터블 배열")]
         public MD_BaseScriptableObject[] scriptableOBJArr;
 
+
+
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
+
+            for (int i = 0; i < scriptableOBJArr.Length; i++)
+            {
+                scriptableOBJArr[i].Func_Init();
+            }
         }
 
         public T Func_GetScriptable<T>() where T : MD_BaseScriptableObject

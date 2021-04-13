@@ -13,9 +13,38 @@ namespace MiniDoodles
 
         [Header("- 슬롯의 아이템이 비어있을 때 이미지")]
         public Sprite sprite_VoidItem;
-        
+
         [Header("- 슬롯 아이템 이미지 배열")]
         public Sprite[] sprite_ItemArr;
+
+        private int[] sprite_ItemNameArr;       // 아이템 이름의 숫자 배열
+
+        public override void Func_Init()
+        {
+            Func_SetItemNameArr();                  // 아이템 이름들을 정수형으로 저장
+            MD_Sort.Func_ImageNameSort(sprite_ItemArr, sprite_ItemNameArr, 0, sprite_ItemArr.Length - 1);  // 아이템 순서 정렬
+        }
+
+        #region 아이템 이미지의 이름을 모두 정수형으로 저장
+
+        /// <summary>
+        /// <para> 작 성 자 : 이승엽 </para>
+        /// <para> 작 성 일 : 2021.04.13 </para>
+        /// <para> 내    용 : 아이템 이미지들의 이름을 숫자로 변환하여 저장 </para>
+        /// </summary>
+        private void Func_SetItemNameArr()
+        {
+            sprite_ItemNameArr = new int[sprite_ItemArr.Length];
+
+            for (int i = 0; i < sprite_ItemArr.Length; i++)
+            {
+                sprite_ItemNameArr[i] = int.Parse(sprite_ItemArr[i].name);
+            }
+        }
+
+        #endregion
+
+        #region 기능들
 
         /// <summary>
         /// <para> 작 성 자 : 이승엽 </para>
@@ -36,5 +65,7 @@ namespace MiniDoodles
 
             return null;
         }
+
+        #endregion
     }
 }

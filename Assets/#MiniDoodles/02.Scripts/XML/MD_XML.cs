@@ -29,7 +29,6 @@ namespace MiniDoodles
             Func_LoadPlayerXML();
             Func_LoadCharacterCardXML();
             Func_LoadItemXML();
-
         }
 
         #region Create XML
@@ -173,7 +172,7 @@ namespace MiniDoodles
             }
             else
             {
-                Debug.Log(MD_PathDefine.XML_PlayerInformation + "Save 없음!");
+                Debug.Log(MD_PathDefine.XML_PlayerInformation + " Save 없음!");
                 Func_Create_Player_InfoXML();
             }
         }
@@ -199,7 +198,7 @@ namespace MiniDoodles
             }
             else
             {
-                Debug.Log(MD_PathDefine.XML_CharacterCardInformation + "Save 없음!");
+                Debug.Log(MD_PathDefine.XML_CharacterCardInformation + " Save 없음!");
 
             }
         }
@@ -225,10 +224,15 @@ namespace MiniDoodles
             }
             else
             {
-                Debug.Log(MD_PathDefine.XML_CharacterCardInformation + "Save 없음!");
-
+                Debug.Log(MD_PathDefine.XML_CharacterCardInformation + " Save 없음!");
             }
         }
+
+        #endregion
+
+        #region Save XML
+
+
 
         #endregion
 

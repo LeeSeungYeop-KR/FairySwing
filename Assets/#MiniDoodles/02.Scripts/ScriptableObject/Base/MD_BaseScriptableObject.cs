@@ -7,7 +7,7 @@ namespace MiniDoodles
 
     public class MD_BaseScriptableObject : ScriptableObject
     {
-        public void Func_Init()
+        public virtual void Func_Init()
         {
 
         }
