@@ -12,20 +12,22 @@ namespace MiniDoodles
     /// </summary>
     public class MD_RandomBox : MonoBehaviour
     {
-        [Header("- A, B, C 확률 배열")]
-        [SerializeField] private MD_RandomBoxData[] probabilityArr;
+        #region 랜덤박스 데이터 구조체
 
-        [Header("- A 랜덤 아이템 배열")]
-        [SerializeField] private MD_RandomBoxData[] item_A_PrizeArr;
+        [System.Serializable]
+        struct MD_RandomBoxDataPool
+        {
+            public string itemName;
+            public MD_RandomBoxData[] itemPrizeArr;
+        }
 
-        [Header("- B 랜덤 아이템 배열")]
-        [SerializeField] private MD_RandomBoxData[] item_B_PrizeArr;
+        #endregion
 
-        [Header("- C 랜덤 아이템 배열")]
-        [SerializeField] private MD_RandomBoxData[] item_C_PrizeArr;
+        [Header("- 각 등급의 확률 배열")]
+        [SerializeField] private MD_RandomBoxData[] probabilityArr;     // 각 등급의 확률 배열
 
-        [Header("- 테스트 꽝 배열")]
-        [SerializeField] private string[] test_loseArr;
+        [Header("- 각 등급의 랜덤 아이템 배열")]
+        [SerializeField] private MD_RandomBoxDataPool[] itemDataArr;
 
         [Header("- 텍스트 배열")]
         [SerializeField] private Text[] testTextArr;
@@ -34,93 +36,90 @@ namespace MiniDoodles
         [Header("- 테스트 결과 텍스트 배열")]
         [SerializeField] private Text[] testResultTextArr;
 
-        private int[] testResultArr = new int[17];
+        private int[] testResultArr = new int[13];
         private int testNum = 0;
 
         public void Button_RandomBox()
         {
             for (int i = 0; i < testTextArr.Length; i++)
             {
-                testResultArr[16]++;
+                testResultArr[12]++;
                 testTextArr[i].text = Func_RandomText();
             }
-
         }
 
         private string Func_RandomText()
         {
-            switch (Func_CheckRating())
+            int _ratingNum = Func_CheckRating();
+
+            // 테스트
+            switch (_ratingNum)
             {
                 case 0:
                     // A
                     testResultArr[0]++;
                     testNum = 0;
-                    return Func_RandomBox(item_A_PrizeArr);
+                    break;
 
                 case 1:
                     // B
                     testResultArr[4]++;
                     testNum = 4;
-                    return Func_RandomBox(item_B_PrizeArr);
+                    break;
 
                 case 2:
                     // C
                     testResultArr[8]++;
                     testNum = 8;
-                    return Func_RandomBox(item_C_PrizeArr);
+                    break;
             }
+            // 테스트 끝
 
-            // 꽝
-            int _rand = UnityEngine.Random.Range(0, test_loseArr.Length);
-            // 테스트
-            testResultArr[12]++;
-            testResultArr[13 + _rand]++;
-            for (int j = 0; j < testResultTextArr.Length; j++)
-            {
-                testResultTextArr[j].text = testResultArr[j].ToString();
-            }
-
-            return test_loseArr[_rand];
+            return Func_RandomBox(itemDataArr[_ratingNum].itemPrizeArr);
         }
 
         private int Func_CheckRating()
         {
             int _rand = UnityEngine.Random.Range(1, 101);
+            float _probabilityAll = 0.0f;
 
             for (int i = 0; i < probabilityArr.Length; i++)
             {
-                if (probabilityArr[i].probability >= _rand)
+                _probabilityAll += probabilityArr[i].probability;
+                if (_probabilityAll >= _rand)
                 {
                     return i;
                 }
             }
 
-            return 10;
+            Debug.Log("asda11111");
+            return probabilityArr.Length - 1;   // 확률의 총 합이 100 이하일 때 마지막 확률로 줌
         }
 
         private string Func_RandomBox(MD_RandomBoxData[] _data)
         {
             int _rand = UnityEngine.Random.Range(1, 101);
+            float _probabilityAll = 0.0f;
+
             for (int i = 0; i < _data.Length; i++)
             {
-                if (_data[i].probability >= _rand)
+                _probabilityAll += _data[i].probability;
+                if (_probabilityAll >= _rand)
                 {
+                    // 테스트
                     testNum += i + 1;
                     testResultArr[testNum]++;
-                    // 테스트
                     for (int j = 0; j < testResultTextArr.Length; j++)
                     {
                         testResultTextArr[j].text = testResultArr[j].ToString();
                     }
+                    // 테스트 끝
+
                     return _data[i].itemIndex;
                 }
             }
 
-            // 테스트
-            for (int i = 0; i < testResultTextArr.Length; i++)
-            {
-                testResultTextArr[i].text = testResultArr[i].ToString();
-            }
+            Debug.Log("asda2222");
             return _data[_data.Length - 1].itemIndex;
         }
 
